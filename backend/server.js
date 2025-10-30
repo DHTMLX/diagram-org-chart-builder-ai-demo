@@ -79,7 +79,7 @@ async function callOpenAIForRephrase(userText) {
 
     try {
         const res = await openai.chat.completions.create({
-            model: 'gpt-5-nano',
+            model: 'gpt-4.1-nano',
             messages: messages,
         });
         return res.choices[0].message.content;
@@ -93,7 +93,7 @@ async function callOpenAIForDiagram(userText) {
 
     try {
         const res = await openai.chat.completions.create({
-            model: 'gpt-5-nano',
+            model: 'gpt-4.1-nano',
             messages: messages,
             tools: schemaList,
             tool_choice: { type: "function", function: { name: "create_org_chart_diagram" } },
@@ -105,4 +105,6 @@ async function callOpenAIForDiagram(userText) {
 }
 
 const PORT = process.env.PORT || 3001;
-http.listen(PORT);
+http.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});

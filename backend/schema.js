@@ -15,7 +15,7 @@ export const schemaList = [
                             properties: {
                                 id: {
                                     type: "string",
-                                    description: "Unique employee identifier (name in lowercase)."
+                                    description: "Unique numerical employee identifier using dot notation for hierarchy (e.g., '1', '1.1', '1.2')."
                                 },
                                 text: {
                                     type: "string",

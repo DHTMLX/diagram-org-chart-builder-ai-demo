@@ -22,4 +22,5 @@ CRITICAL RULES:
 6.  **COLLEAGUES**: If the text states that "David, Frank, and Grace report to Bob," it means they are colleagues. They must have the SAME 'parent' ('bob').
 7.  **POSITION**: If the employee's position is specified in the text, add it to the 'text' field. The employee's full name should be added to the 'title' field. For example, for "Peter (CEO)", use title: "Peter", text: "CEO".
 8.  **SPECIAL ROLES**: If an employee is described as an 'assistant', add the property \`"assistant": true\`. This role still requires a 'parent' field.
-9.  **FUNCTION**: ALWAYS use the 'create_org_chart_diagram' function.`;
+9.  **OUTPUT FORMAT**: The 'nodes' array MUST contain ONLY fully-formed JSON objects. NEVER include standalone strings or other data types in the array. Each object must have at least an 'id' and a 'text' property.
+10. **FUNCTION**: ALWAYS use the 'create_org_chart_diagram' function.`;
