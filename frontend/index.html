@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DHTMLX Diagram + AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.dhtmlx.com/diagram/pro/edge/diagramWithEditor.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.28.1/min/vs/editor/editor.main.css">
+</head>
+<body>
+    <div class="main-content">
+        <h1>DHTMLX Diagram Org Chart AI Builder</h1>
+        
+        <details id="step-1-details" class="step-container" open>
+            <summary>Step 1: Enter your request</summary>
+            <div class="step-content">
+                 <div class="step-1-layout">
+                    <div class="input-area">
+                        <textarea id="user-input" class="user-input" rows="5" placeholder="Describe your company's structure or select a template on the right..."></textarea>
+                        <div id="controls" class="controls">
+                            <button id="analyze-btn" class="analyze-btn">✨ Analyze</button>
+                        </div>
+                    </div>
+                    <div class="suggestions-area">
+                        <h4>Start with an example:</h4>
+                        <div class="suggestions-pills">
+                           <button class="prompt-pill" data-prompt="Alice is the boss. Bob heads up sales, Carol leads marketing, and they both report to Alice. David and Frank are on Bob's sales crew. Carol has Grace on her team.">Free style</button>
+                           <button class="prompt-pill" data-prompt="- **Top Management:**
+  - Henry Bennett (Chairman & CEO) is the head of the company.
+  - Greg Mash (CTO) and Olga Dahixi (CFO) are partners to Henry Bennett.
+  - Mike Freebel (Assistant) reports directly to Henry Bennett.
+- **Direct Reports to CEO:**
+  - Emma Lynch (QA Lead)
+  - Jerry Wagner (Technical Director)
+  - Jonathan Lane (Manager)
+- **Emma Lynch's Team (QA):**
+  - Charles Little (QA)
+  - Douglas Riley (QA)
+  - Eugene Foster (QA)
+- **Jerry Wagner's Team (Technical Department):**
+  - Mark Nichols (Team Lead), who manages Sean Parker (Programmer), who in turn manages Laura Alvarez (Junior).
+  - Nicholas Cruz (Team Lead), who manages Michael Shaw (Programmer), who in turn manages John Flores (Junior).
+- **Jonathan Lane's Team:**
+  - Sandra Butler (Marketer)
+  - Julie Green (Designer)
+  - Richard Hicks (Sales Manager)">Markdown list</button>
+                           <button class="prompt-pill" data-prompt="graph TD
+    A[Director] --> B(Team Lead A)
+    A --> C(Team Lead B)
+    B --> D(Developer 1)
+    B --> E(Developer 2)
+    C --> F(Designer 1)
+    C --> G(Designer 2)
+    D --> H(Intern 1)
+    E --> I(Intern 2)">Mermaid style</button>
+                           <button class="prompt-pill" data-prompt="Liam (Project Lead)
+├── Sophia (Software Architect)
+│   ├── Noah (Senior Developer)
+│   │   ├── Emma (Junior Developer)
+│   │   └── Oliver (QA Engineer)
+│   └── Isabella (UI/UX Designer)
+├── Lucas (Business Analyst)
+│   └── Mia (Stakeholder Representative)
+└── Arthur (External Consultant)
+    └── Chloe (Legal Advisor)">Pseudographics</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <details id="review-section" class="step-container">
+            <summary>Step 2: AI has restructured the text, please review</summary>
+            <div class="step-content">
+                <textarea id="rephrased-text" class="rephrased-text" rows="4"></textarea>
+                <div id="controls" class="controls">
+                    <button id="confirm-btn" class="confirm-btn">✨ Build diagram</button>
+                </div>
+            </div>
+        </details>
+
+        <details id="diagram-section" class="step-container">
+            <summary>Step 3: See your Diagram Org Chart</summary>
+            <div class="step-content">
+                <div id="diagram-container" class="diagram-container"></div>
+            </div>
+        </details>
+        
+        <details id="export-section" class="step-container">
+            <summary>Step 4: Export and data</summary>
+            <div class="step-content">
+                <div id="export-controls" class="export-controls">
+                    <button id="export-json-btn" class="export-btn">Export to JSON</button>
+                    <button id="export-png-btn" class="export-btn">Export to PNG</button>
+                    <button id="export-pdf-btn" class="export-btn">Export to PDF</button>
+                </div>
+                <p class="export-hint">You can also export via the menu above <b>File</b><span class="path-arrow">→</span><b>Export as</b> of the diagram editor.</p>
+                <h4 class="json-data-title">Generated JSON data:</h4>
+                <div id="json-editor" class="json-editor"></div>
+            </div>
+        </details>
+
+        <div id="error-message" class="error-text"></div>
+    </div>
+
+    <div class="dhx_demo-footer">
+        <div class="dhx_layout-cell-content">
+            <a href="https://dhtmlx.com/docs/demo/grid-ai-review-analysis/" title="Previous Demo" class="dhx_slider-btn dhx_slider-btn--prev">
+                <svg width="15" height="15" viewBox="0 0 15 15"><path d="M0.820312 6.67969V8.32031H10.8203L6.25 12.9297L7.42188 14.1016L14.0234 7.5L7.42188 0.898438L6.25 2.07031L10.8203 6.67969H0.820312Z" fill="#fff"></path></svg>
+            </a>
+            <a href="https://docs.dhtmlx.com/docs/demo/form-builder-ai/" title="Next Demo" class="dhx_slider-btn dhx_slider-btn--next">
+                <svg width="15" height="15" viewBox="0 0 15 15"><path d="M0.820312 6.67969V8.32031H10.8203L6.25 12.9297L7.42188 14.1016L14.0234 7.5L7.42188 0.898438L6.25 2.07031L10.8203 6.67969H0.820312Z" fill="#fff"></path></svg>
+            </a>
+            <div class="dhx_demo-footer-text">
+                <h1>DHTMLX Diagram Org Chart AI Builder.</h1>
+                <p>Your smart assistant for creating<a href="https://dhtmlx.com/docs/products/dhtmlxDiagram/" target="_blank">DHTMLX Diagrams</a> from text.</p>
+            </div>
+            <a href="https://github.com/DHTMLX/diagram-org-chart-builder-ai-demo/" class="dhx_sample-btn dhx_sample-btn--cta" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.dhtmlx.com/diagram/pro/edge/diagramWithEditor.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.28.1/min/vs/loader.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
