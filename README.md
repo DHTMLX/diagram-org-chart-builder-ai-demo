@@ -2,7 +2,7 @@
 
 A full-stack web application that integrates DHTMLX Diagram with AI for generating organizational charts and diagrams from natural language text descriptions.
 
-### **[✨ Try the Live Demo >>>](https://dhtmlx.com/docs/demo/diagram-org-chart-builder-ai-demo/)**
+### **[✨ Try the Live Demo >>>](https://dhtmlx.com/docs/demo/ai-org-chart-builder/)**
 
 ## Features
 
@@ -14,7 +14,7 @@ A full-stack web application that integrates DHTMLX Diagram with AI for generati
 ## AI Service
 
 - Configured to work with any OpenAI API-compatible service.
-- Tested with `gpt-5-nano` model.
+- Tested with `gpt-4.1-nano` model.
 
 ## Setup and Installation
 
@@ -36,11 +36,15 @@ OPENAI_BASE_URL=https://api.openai.com/v1
 
 # --- Security Configuration ---
 CORS_ALLOWED_ORIGINS=http://localhost:3001,http://127.0.0.1:3001,http://localhost:5500,http://127.0.0.1:5500
+
+# --- Server Configuration (optional) ---
+PORT=3001
 ```
 
 -   **`OPENAI_API_KEY`**: (Required) Your secret API key for the AI service.
 -   **`OPENAI_BASE_URL`**: The API endpoint for the AI service. Can be changed to use a proxy or a different provider compatible with the OpenAI API.
 -   **`CORS_ALLOWED_ORIGINS`**: A crucial security setting. This is a comma-separated list of web addresses allowed to connect to your backend server. For production, you **must** change this to your public frontend's URL (e.g., `https://myapp.com`).
+-   **`PORT`**: (Optional) The port number on which the server will run. Defaults to 3001 if not set.
 
 ### Run the Application
 
