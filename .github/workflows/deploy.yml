@@ -30,20 +30,26 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_TOKEN }}
 
+      - name: Set lowercase username
+        run: echo "USERNAME=$(echo '${{ github.actor }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.CUSTOM_REGISTRY_URL }}/${USERNAME}/ai-org-chart-builder:${{ github.ref_name }}
+          tags: ${{ secrets.CUSTOM_REGISTRY_URL }}/${{ env.USERNAME }}/ai-org-chart-builder:${{ github.ref_name }}
 
       - name: Trigger Server Restart Webhook
         run: |
+          echo "Deploying branch: ${{ github.ref_name }}"
           if [ "${{ github.ref_name }}" = "main" ]; then
             curl -X POST "${{ secrets.WEBHOOK_URL_MAIN }}"
           elif [ "${{ github.ref_name }}" = "next" ]; then
             curl -X POST "${{ secrets.WEBHOOK_URL_NEXT }}"
           elif [ "${{ github.ref_name }}" = "test" ]; then
             curl -X POST "${{ secrets.WEBHOOK_URL_NEXT }}"
+          else
+            echo "No webhook for branch ${{ github.ref_name }}"
           fi
