@@ -38,7 +38,7 @@ jobs:
           push: true
           tags: ${{ secrets.CUSTOM_REGISTRY_URL }}/${USERNAME}/ai-org-chart-builder:${{ github.ref_name }}
 
-- name: Trigger Server Restart Webhook
+      - name: Trigger Server Restart Webhook
         run: |
           if [ "${{ github.ref_name }}" = "main" ]; then
             curl -X POST "${{ secrets.WEBHOOK_URL_MAIN }}"
