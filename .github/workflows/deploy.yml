@@ -2,7 +2,7 @@ name: Deploy AI Org Chart Builder Demo
 
 on:
   push:
-    branches: [ main, next ]
+    branches: [ main, next, test ]
 
 jobs:
   build-and-deploy:
@@ -36,12 +36,14 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.CUSTOM_REGISTRY_URL }}/ai-org-chart-builder:${{ github.ref_name }}
+          tags: ${{ secrets.CUSTOM_REGISTRY_URL }}/${USERNAME}/ai-org-chart-builder:${{ github.ref_name }}
 
-      - name: Trigger Server Restart Webhook
+- name: Trigger Server Restart Webhook
         run: |
           if [ "${{ github.ref_name }}" = "main" ]; then
             curl -X POST "${{ secrets.WEBHOOK_URL_MAIN }}"
           elif [ "${{ github.ref_name }}" = "next" ]; then
+            curl -X POST "${{ secrets.WEBHOOK_URL_NEXT }}"
+          elif [ "${{ github.ref_name }}" = "test" ]; then
             curl -X POST "${{ secrets.WEBHOOK_URL_NEXT }}"
           fi
