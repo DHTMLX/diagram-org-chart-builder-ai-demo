@@ -9,7 +9,7 @@ A full-stack web application that integrates DHTMLX Diagram with AI for generati
 - **Natural Language to Diagram:** Describe your diagram in plain English (e.g., "An organizational chart with CEO and department heads") and watch it come to life.
 - **Live Preview:** See the generated DHTMLX Diagram instantly.
 - **Editable JSON:** View, edit, and fine-tune the generated JSON configuration in a built-in code editor.
-- **Instant Updates:** Modify the JSON and click "Update Preview" to see your changes immediately without calling the AI again.
+- **Instant Updates:** Modify the JSON and see your changes immediately without calling the AI again.
 
 ## AI Service
 
@@ -21,7 +21,11 @@ A full-stack web application that integrates DHTMLX Diagram with AI for generati
 Follow these steps to get the project running on your local machine.
 
 ```bash
+# 1. Clone the repository
+git clone diagram-org-chart-builder-ai-demo
 cd diagram-org-chart-builder-ai-demo
+
+# 2. Install dependencies
 npm install
 ```
 
@@ -58,7 +62,7 @@ You should see the following output in your terminal:
 Server started on port 3001
 ```
 
-### 4. Open in Browser
+### Open in Browser
 
 Open your favorite web browser and navigate to:
 [http://localhost:3001](http://localhost:3001)
